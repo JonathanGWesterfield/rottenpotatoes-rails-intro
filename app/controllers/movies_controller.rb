@@ -70,23 +70,27 @@ class MoviesController < ApplicationController
     # default: render 'new' template
   end
 
+  # Create function for the movie. For adding movies
   def create
     @movie = Movie.create!(params[:movie])
     flash[:notice] = "#{@movie.title} was successfully created."
     redirect_to movies_path
   end
 
+  # Allows us to find the movie based on the movie id
   def edit
     @movie = Movie.find params[:id]
   end
 
+  # Allows us to update a movie based on the movie id
   def update
     @movie = Movie.find params[:id]
-    @movie.update_attributes!(params[:movie])
+    @movie.update_attributes(params[:movie])
     flash[:notice] = "#{@movie.title} was successfully updated."
     redirect_to movie_path(@movie)
   end
 
+  # Allows us to delete movies
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
