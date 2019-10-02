@@ -1,4 +1,6 @@
 -#  This file is app/views/movies/index.html.haml
+
+-# generate a textbox for each rating we have
 %h1 All Movies
 = form_tag movies_path, :method => :get, :id => 'ratings_form' do
   Include:
@@ -6,6 +8,9 @@
     = rating
     = check_box_tag "ratings[#{rating}]", 1, params[:"#{rating}"]
   = submit_tag 'Refresh', :id => 'ratings_submit'
+
+
+  -# Sort by title and release date
 %table#movies
   %thead
     %tr
